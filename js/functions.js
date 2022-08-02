@@ -109,3 +109,78 @@ const arr = [1, null, {}, [], 5, 420, 'hello'];
 processArray(arr, arr => {
     console.log(`Array with ${arr.length} elements was processed`);
 });
+
+// recursive functions
+function getFactorial(n) {
+    if (n < 2) {
+        return 1;
+    } else {
+        return n * getFactorial(n - 1);
+    }
+}
+
+// стек вызовов
+// getFactorial(3) -> getFactorial(2) -> getFactorial(1) -> return 1
+// return 1 -> 2 * 1 -> (2 * 1) * 3 -> 6
+
+console.log(getFactorial(3)); // 6
+console.log(getFactorial(5)); // 120
+console.log(getFactorial(10)); // 3628800
+
+const object = {
+    name: 'Kostia',
+    age: 26,
+    pets: null,
+    friends: [
+        {
+            name: 'Dima',
+            age: 26,
+            friends: [
+                {
+                    name: 'Borow'
+                }
+            ],
+            brothers: [
+                {
+                    name: 'Vlad'
+                },
+                {
+                    name: 'Kostia T.'
+                }
+            ]
+        },
+        {
+            name: 'Vlad'
+        }
+    ],
+    work: {
+        name: 'Globallogic',
+        address: 'Nikolskaya, 25',
+        staff: [
+            {
+                name: 'Ivan'
+            }
+        ]
+    },
+    married: false
+};
+
+function showAllStrings(obj) {
+    for (let prop in obj) {
+        if (typeof obj[prop] === 'string') {
+            console.log(obj[prop]);
+        } else if (typeof obj[prop] === 'object') {
+            if (Array.isArray(obj[prop])) {
+                for (let elem of obj[prop]) {
+                    if (typeof obj[prop] === 'object') {
+                        showAllStrings(elem);
+                    }
+                }
+            } else if (obj[prop]) {
+                showAllStrings(obj[prop]);
+            }
+        }
+    }
+}
+
+showAllStrings(object);
