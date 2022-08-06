@@ -139,12 +139,13 @@ const arrow = () => {
 console.log(this === arrow()); // arrow-функции не имеют своего this
 // соответственно, их нельзя использовать как конструкторы
 
+/*
 const timer = document.getElementById('timer');
 timer.addEventListener('click', function (e) {
     console.log(e.target); // юзать вместо this
     console.log(this === e.target);
 });
-
+*/
 // опциональная цепь (Null-coalescing operator)
 let human = {
     name: 'NoName',
